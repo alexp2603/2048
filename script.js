@@ -11,23 +11,48 @@ function gameStart(){
 
 	var board = document.getElementById("reset_button");
 
+	console.log(getBoxesByColumn(1));
+	console.log(getBoxesByRow(1));
 	board.addEventListener("keyup", inputListen, false);
 }
 
+//Event handling for gameStart()
+function inputListen(e){
+	var code = e.keyCode;
+	switch(code){
+		case 37:
+			console.log("left");
+			var result = moveLeft();
+			if(result){
+				generateNumber();
+			}
+			break;
+		case 38:
+				console.log("up");
+				var result = moveUp();
+				if(result){
+					generateNumber();
+				}
+			break;
+		case 39:
+			alert("right");
+			break;
+		case 40:
+			alert("down");
+			break;
+	}
+}
 
-//Function to generate a number (90% chance 2, 10% chance 4 in an empty box)
+
+//Generates number in empty box (90% chance 2, 10% chance 4 in an empty box)
 function generateNumber(){
-
-
 	var emptyBoxes = [];
 	emptyBoxes = cycleBoxes();
-
 	//checks for full board and does nothing if true
 	if(emptyBoxes.length == 0){
 		console.log("Game board full");
 		return;
 	}
-
 	//generates random box index as well as random number between 0 and 1
 	var randomBox = Math.floor((Math.random()* (emptyBoxes.length) ));
 	var randomNumber =  Math.random();
@@ -47,14 +72,27 @@ function generateNumber(){
 	}
 } 
 
-//Generates an array of all boxes
+//BOX FETCH FUNCTIONS
+
+//gets all boxes 
 function getBoxes(){
 	return document.getElementsByClassName("v");
 }
 
+//get Boxes by column
 function getBoxesByColumn(columnNumber) {
   return document.querySelectorAll("div[id^=row] > div[id$='" + columnNumber + "']"); // SHould learn about Queuryselectors soon
 }
+
+//get boxes by row number
+
+
+function getBoxesByRow(rowNumber) {
+  return document.querySelectorAll("div[id^=row]>div[id^='" + rowNumber + "']");// SHould learn about Queuryselectors soon
+}
+
+
+
 
 //Generates an array of empty boxes
 function cycleBoxes(){
@@ -84,27 +122,6 @@ function reset(){
 }
 
 
-function inputListen(e){
-	var code = e.keyCode;
-	switch(code){
-		case 37:
-			alert("left");
-			break;
-		case 38:
-				console.log("up");
-				var result = moveUp();
-				if(result){
-					generateNumber();
-				}
-			break;
-		case 39:
-			alert("right");
-			break;
-		case 40:
-			alert("down");
-			break;
-	}
-}
 
 
 //MOVEMENT Controls
@@ -150,6 +167,48 @@ function moveUp()
 	return totalSwitch;
 
 }
+
+function moveLeft()
+{
+	totalSwitch = false;
+	for(i = 0 ; i < 4; i++)
+	{
+		var  boxes  = getBoxesByRow(i+1); //Implemented
+		for( j = 0 ; j < boxes.length; j ++)
+		{
+			var box1_value =boxes[j].querySelector(".v").innerHTML;
+
+			if( box1_value != "")
+			{
+				var count = 0; 
+				var switched = false;
+				while(count < j && !switched)
+				{
+					box2_value = boxes[count].querySelector(".v").innerHTML;
+					if( box2_value == "")
+					{
+						swapValues(boxes[j], boxes[count]);
+						if(count != 0){
+							mergeUp(boxes[count], boxes[count-1]); //implement
+						}
+						totalSwitch = true;
+						switched = true;
+					}
+					if(j != 0){
+							var mergeSwitch = mergeUp(boxes[j], boxes[j-1]); //implement
+							if(mergeSwitch){
+								totalSwitch = true;
+							}
+						}
+					count++;
+				}
+			}
+		}
+	}
+	return totalSwitch;
+
+}
+
 
 
 
