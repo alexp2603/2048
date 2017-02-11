@@ -5,7 +5,7 @@ Learning front end development by using vanilla HTML/JS/CSS with a particular fo
 
 Update 
 
-1.2 -
-  Implemented moveLeft() function
-  updated CSS classes up to .box_512
-  added debugging button in html
+Updated 1.2
+-Implemented moveLeft() function
+-Updated CSS classes up to .box_512
+-Added debugging button in html
