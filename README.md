@@ -7,5 +7,7 @@ Update
 
 Updated 1.2
 Implemented moveLeft() function
+
 Updated CSS classes up to .box_512
+
 Added debugging button in html
