@@ -1,0 +1,165 @@
+
+/*BackGround*/
+
+#game_background{
+
+	background: #fff4e8;
+	border: solid black;
+
+	width: 500px;
+	height: 500px;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5%;
+}
+
+.row{
+	position: relative;
+
+
+	width: 480px;
+	height: 120px;
+
+	float: left;
+
+	margin-left: 10px;
+}
+
+#row_1{
+	margin-top: 10px;
+}
+
+.box_empty{
+
+	position: relative;
+
+	/*background:lightgrey; */
+	/*border: black solid; */
+	border-width: 1px;
+
+	width: 98px;
+	height: 98px;
+
+	margin: 10px;
+
+	float: left;
+}
+
+.box_2{
+
+	position: relative;
+
+	background:white;
+	border: black solid;
+	border-width: 1px;
+
+	width: 98px;
+	height: 98px;
+
+	margin: 10px;
+
+	float: left;
+}
+
+
+.box_4{
+
+	position: relative;
+
+	background:lightgrey;
+	border: black solid;
+	border-width: 1px;
+
+	width: 98px;
+	height: 98px;
+
+	margin: 10px;
+
+	float: left;
+}
+
+.box_8{
+
+	position: relative;
+
+	background:lightblue;
+	border: black solid;
+	border-width: 1px;
+
+	width: 98px;
+	height: 98px;
+
+	margin: 10px;
+
+	float: left;
+}
+
+.box_16{
+
+	position: relative;
+
+	background:red;
+	border: black solid;
+	border-width: 1px;
+
+	width: 98px;
+	height: 98px;
+
+	margin: 10px;
+
+	float: left;
+}
+
+
+.v{
+	position: relative;
+	text-align:center;
+
+	height: 100%;
+
+	text-align: center;
+	vertical-align: middle;
+	line-height:70px; 
+}
+
+
+/*DEALING WITH BUTTON*/
+
+#button{
+	text-align: center;
+}
+#start_button{
+	width: 10%;
+	height: 50px;
+	margin-top: 4%;
+	margin-left: auto;
+	margin-right: auto;
+	background: lightgreen;
+	color:black;
+}
+#start_button:hover{
+	background:green;
+	color: white;
+}
+
+#reset_button{
+	width: 10%;
+	height: 50px;
+	margin-top: 4%;
+	margin-left: auto;
+	margin-right: auto;
+	background: pink;
+	color:black;
+}
+#reset_button:hover{
+	background:red;
+	color: white;
+}
+
+#footer{
+ 	align-self: center;
+	position: absolute; /* I don't care about other things */
+	bottom: 0; /* I want to be on the bottom... */
+	text-align: center;   /* ...and to the left */
+}
