@@ -212,7 +212,7 @@
 #start_button{
 	width: 10%;
 	height: 50px;
-	margin-top: 4%;
+	margin-top: 1%;
 	margin-left: auto;
 	margin-right: auto;
 	background: lightgreen;
@@ -226,7 +226,7 @@
 #reset_button{
 	width: 10%;
 	height: 50px;
-	margin-top: 4%;
+	margin-top: 1%;
 	margin-left: auto;
 	margin-right: auto;
 	background: pink;
@@ -237,9 +237,21 @@
 	color: white;
 }
 
+#rules{
+	margin-top:1%;
+	width: 50%;
+	margin-left:auto;
+	margin-right:auto;
+	text-align: center;
+}
+
+#rule_p{
+	alrign: center;
+}
+
 #footer{
  	align-self: center;
 	position: absolute; /* I don't care about other things */
-	bottom: 0; /* I want to be on the bottom... */
+	/*bottom: 0; /* I want to be on the bottom... */ 
 	text-align: center;   /* ...and to the left */
 }
