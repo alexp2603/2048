@@ -14,6 +14,8 @@ function gameStart(){
 	console.log(getBoxesByColumn(1));
 	console.log(getBoxesByRow(1));
 	board.addEventListener("keyup", inputListen, false);
+
+	document.getElementById("rules_p").innerHTML = "Use the arrow keys to push boxes together and form the number 2048!";
 }
 
 //Event handling for gameStart()
@@ -35,11 +37,19 @@ function inputListen(e){
 				}
 			break;
 		case 39:
-			alert("right");
+			console.log("right");
+				var result = moveRight();
+				if(result){
+					generateNumber();
+				}
+
 			break;
 		case 40:
-			alert("down");
-			break;
+			console.log("down");
+				var result = moveDown();
+				if(result){
+					generateNumber();
+				}
 	}
 }
 
@@ -168,6 +178,50 @@ function moveUp()
 
 }
 
+function moveDown()
+{
+	totalSwitch = false;
+	for(i = 0 ; i < 4; i++)
+	{
+		var  boxes  = getBoxesByColumn(i+1);
+		var newBoxes = inverseArray(boxes); //inverses array
+
+		boxes = newBoxes;
+		for( j = 0 ; j < boxes.length; j ++)
+		{
+			var box1_value =boxes[j].querySelector(".v").innerHTML;
+
+			if( box1_value != "")
+			{
+				var count = 0; 
+				var switched = false;
+				while(count < j && !switched)
+				{
+					box2_value = boxes[count].querySelector(".v").innerHTML;
+					if( box2_value == "")
+					{
+						swapValues(boxes[j], boxes[count]);
+						if(count != 0){
+							mergeUp(boxes[count], boxes[count-1]); //implement
+						}
+						totalSwitch = true;
+						switched = true;
+					}
+					if(j != 0){
+							var mergeSwitch = mergeUp(boxes[j], boxes[j-1]); //implement
+							if(mergeSwitch){
+								totalSwitch = true;
+							}
+						}
+					count++;
+				}
+			}
+		}
+	}
+	return totalSwitch;
+
+}
+
 function moveLeft()
 {
 	totalSwitch = false;
@@ -206,8 +260,55 @@ function moveLeft()
 		}
 	}
 	return totalSwitch;
+}
+
+
+function moveRight()
+{
+	totalSwitch = false;
+	for(i = 0 ; i < 4; i++)
+	{
+		var  boxes  = getBoxesByRow(i+1); //Implemented
+		var newBoxes = inverseArray(boxes); //inverses array
+
+		boxes = newBoxes;
+
+		for( j = 0 ; j < boxes.length; j ++)
+		{
+			var box1_value =boxes[j].querySelector(".v").innerHTML;
+
+			if( box1_value != "")
+			{
+				var count = 0; 
+				var switched = false;
+				while(count < j && !switched)
+				{
+					box2_value = boxes[count].querySelector(".v").innerHTML;
+					if( box2_value == "")
+					{
+						swapValues(boxes[j], boxes[count]);
+						if(count != 0){
+							mergeUp(boxes[count], boxes[count-1]); //implement
+						}
+						totalSwitch = true;
+						switched = true;
+					}
+					if(j != 0){
+							var mergeSwitch = mergeUp(boxes[j], boxes[j-1]); //implement
+							if(mergeSwitch){
+								totalSwitch = true;
+							}
+						}
+					count++;
+				}
+			}
+		}
+		
+	}
+	return totalSwitch;
 
 }
+
 
 
 
@@ -236,6 +337,21 @@ function mergeUp(box1, box2){
 		return true;
 	}
 }
+
+
+//General Helper methods
+
+function inverseArray(array){
+	var arrayLength = array.length - 1; //equals to 3
+	var newArray = [];
+	for(count = arrayLength ; count>= 0 ; count--){
+		console.log(count);
+		console.log(array[count]);
+		newArray.push(array[count]);
+	}
+	return newArray;
+}
+
 
 // Test functions
 
