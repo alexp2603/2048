@@ -1,3 +1,11 @@
+//Global Variables 
+
+var points_var = 0;
+
+
+
+//Functions
+
 function gameStart(){
 
 	//Generates four random numbers on board
@@ -11,8 +19,8 @@ function gameStart(){
 
 	var board = document.getElementById("reset_button");
 
-	console.log(getBoxesByColumn(1));
-	console.log(getBoxesByRow(1));
+//	console.log(getBoxesByColumn(1));
+//	console.log(getBoxesByRow(1));
 	board.addEventListener("keyup", inputListen, false);
 
 	document.getElementById("rules_p").innerHTML = "Use the arrow keys to push boxes together and form the number 2048!";
@@ -23,21 +31,21 @@ function inputListen(e){
 	var code = e.keyCode;
 	switch(code){
 		case 37:
-			console.log("left");
+//			console.log("left");
 			var result = moveLeft();
 			if(result){
 				generateNumber();
 			}
 			break;
 		case 38:
-				console.log("up");
+//				console.log("up");
 				var result = moveUp();
 				if(result){
 					generateNumber();
 				}
 			break;
 		case 39:
-			console.log("right");
+//			console.log("right");
 				var result = moveRight();
 				if(result){
 					generateNumber();
@@ -45,7 +53,7 @@ function inputListen(e){
 
 			break;
 		case 40:
-			console.log("down");
+///			console.log("down");
 				var result = moveDown();
 				if(result){
 					generateNumber();
@@ -71,10 +79,16 @@ function generateNumber(){
 	if(randomNumber <= 0.9){
 		emptyBoxes[randomBox].innerHTML = 2;
 		emptyBoxes[randomBox].parentNode.className = "box_2";
+		console.log("Generating a 2");
+		points_var += 2;
+		document.getElementById("points_p").innerHTML = points_var;
 	}
 	else if(randomNumber > 0.9){
 		emptyBoxes[randomBox].innerHTML = 4;
+		console.log("Generating a 4");
 		emptyBoxes[randomBox].parentNode.className = "box_4";
+		points_var += 4;
+		document.getElementById("points_p").innerHTML = points_var;
 	}
 	//Checks for some crazy case that should never happen
 	else{
@@ -129,6 +143,8 @@ function reset(){
 	document.getElementById("reset_button").innerHTML = "Start Game";
 	document.getElementById("reset_button").setAttribute('onclick', 'gameStart()');
 	document.getElementById("reset_button").id = 'start_button';
+
+	points_var = 0;
 }
 
 
@@ -333,7 +349,11 @@ function mergeUp(box1, box2){
 		box2.querySelector(".v").innerHTML = box2_value*2;
 		box1.querySelector(".v").innerHTML = "";
 		box1.className = "box_empty";
-		box2.className = "box_" + (box2_value*2)
+		box2.className = "box_" + (box2_value*2);
+
+		console.log("Merge, incrementing points by " + (box2_value*2) );
+		points_var += box2_value*2;
+
 		return true;
 	}
 }
