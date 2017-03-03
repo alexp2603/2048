@@ -1,9 +1,11 @@
 
 /*BackGround*/
 
+
+
 #game_background{
 
-	background: #fff4e8;
+	background: #0000000;
 	border: solid black;
 
 	width: 500px;
@@ -30,6 +32,13 @@
 	margin-top: 10px;
 }
 
+
+/* BOX Styling 
+
+Note to self: could have created one box class to handle all similar elements and then change specific styles with sub classes;
+
+*/
+
 .box_empty{
 
 	position: relative;
@@ -37,6 +46,7 @@
 	/*background:lightgrey; */
 	/*border: black solid; */
 	border-width: 1px;
+	border-radius: 15px;
 
 	width: 98px;
 	height: 98px;
@@ -50,9 +60,11 @@
 
 	position: relative;
 
-	background:white;
+	background: #FFEDAD;
+
 	border: black solid;
 	border-width: 1px;
+	border-radius: 15px;
 
 	width: 98px;
 	height: 98px;
@@ -67,9 +79,11 @@
 
 	position: relative;
 
-	background:lightgrey;
+	background: #FFDE67;
+
 	border: black solid;
 	border-width: 1px;
+	border-radius: 15px;
 
 	width: 98px;
 	height: 98px;
@@ -83,7 +97,9 @@
 
 	position: relative;
 
-	background:lightblue;
+	background: #FFC908;
+
+	border-radius: 15px;
 	border: black solid;
 	border-width: 1px;
 
@@ -99,7 +115,9 @@
 
 	position: relative;
 
-	background:red;
+	background: #FFAA00;
+
+	border-radius: 15px;
 	border: black solid;
 	border-width: 1px;
 
@@ -115,7 +133,9 @@
 
 	position: relative;
 
-	background:yellow;
+	background: #FF8D00;
+
+	border-radius: 15px;
 	border: black solid;
 	border-width: 1px;
 
@@ -131,7 +151,9 @@
 
 	position: relative;
 
-	background:pink;
+	background: #FF7100;
+
+	border-radius: 15px;
 	border: black solid;
 	border-width: 1px;
 
@@ -147,7 +169,9 @@
 
 	position: relative;
 
-	background:orange;
+	background: #FF5C00;
+
+	border-radius: 15px;
 	border: black solid;
 	border-width: 1px;
 
@@ -163,7 +187,9 @@
 
 	position: relative;
 
-	background: teal;
+	background: #FF4000;
+
+	border-radius: 15px;
 	border: black solid;
 	border-width: 1px;
 
@@ -179,7 +205,9 @@
 
 	position: relative;
 
-	background: grey;
+	background: #FF1400;
+
+	border-radius: 15px;
 	border: black solid;
 	border-width: 1px;
 
@@ -195,7 +223,9 @@
 
 	position: relative;
 
-	background: darkred;
+	background: #FF0083;
+
+	border-radius: 15px;
 	border: black solid;
 	border-width: 1px;
 
@@ -211,7 +241,9 @@
 
 	position: relative;
 
-	background: darkred;
+	background: #4400FF;
+
+	border-radius: 15px;
 	border: black solid;
 	border-width: 1px;
 
