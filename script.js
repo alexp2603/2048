@@ -35,6 +35,7 @@ function inputListen(e){
 			var result = moveLeft();
 			if(result){
 				generateNumber();
+				checkWin();
 			}
 			break;
 		case 38:
@@ -42,6 +43,7 @@ function inputListen(e){
 				var result = moveUp();
 				if(result){
 					generateNumber();
+					checkWin();
 				}
 			break;
 		case 39:
@@ -49,6 +51,7 @@ function inputListen(e){
 				var result = moveRight();
 				if(result){
 					generateNumber();
+					checkWin();
 				}
 
 			break;
@@ -57,6 +60,7 @@ function inputListen(e){
 				var result = moveDown();
 				if(result){
 					generateNumber();
+					checkWin();
 				}
 	}
 }
@@ -325,6 +329,15 @@ function moveRight()
 
 }
 
+
+function checkWin(){
+	var boxes = getBoxes();
+	for(boxCur = 0; boxCur < boxes.length; boxCur ++){
+		if(boxes[boxCur].innerHTML == 2048){
+			document.getElementById("rules_p").innerHTML = "You win! Keep on playing to get more points!";
+		}
+	}
+}
 
 
 
