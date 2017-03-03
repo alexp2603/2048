@@ -3,51 +3,59 @@
 var points_var = 0;
 
 
+/**********************/
+/****MAIN FUNCTIONS ***/
+/**********************/
 
-//Functions
+/****GAME CONTROL FUNCTIONS ****/
 
+//Starts the game
 function gameStart(){
 
-	//Generates four random numbers on board
+	//Generates four initial random numbers on board
 	for(gameStart_i = 0; gameStart_i < 4; gameStart_i++){
 		generateNumber();
 	}
 
+	//Updates the start game button into a reset button
 	document.getElementById("start_button").innerHTML = "Reset Game";
 	document.getElementById("start_button").setAttribute('onclick', 'reset()');
 	document.getElementById("start_button").id = 'reset_button';
 
-	var board = document.getElementById("reset_button");
+	//Add event listener to document
+	document.addEventListener("keyup", inputListen, false);
 
-//	console.log(getBoxesByColumn(1));
-//	console.log(getBoxesByRow(1));
-	board.addEventListener("keyup", inputListen, false);
-
+	//shows rules
 	document.getElementById("rules_p").innerHTML = "Use the arrow keys to push boxes together and form the number 2048!";
 }
 
-//Event handling for gameStart()
+
+
+//Event handling in gamestart page
 function inputListen(e){
 	var code = e.keyCode;
+
+	//Use switch statement to differentiate depending on the input code
 	switch(code){
+
+		//Left
 		case 37:
-//			console.log("left");
 			var result = moveLeft();
 			if(result){
 				generateNumber();
 				checkWin();
 			}
 			break;
+		//Up
 		case 38:
-//				console.log("up");
 				var result = moveUp();
 				if(result){
 					generateNumber();
 					checkWin();
 				}
 			break;
+		//Right
 		case 39:
-//			console.log("right");
 				var result = moveRight();
 				if(result){
 					generateNumber();
@@ -55,8 +63,8 @@ function inputListen(e){
 				}
 
 			break;
+		//Down
 		case 40:
-///			console.log("down");
 				var result = moveDown();
 				if(result){
 					generateNumber();
@@ -80,6 +88,7 @@ function generateNumber(){
 	var randomNumber =  Math.random();
 
 	//Checks probability and assigns appropriate number value to random box index
+	//Changes box properties as well as increments point counter.
 	if(randomNumber <= 0.9){
 		emptyBoxes[randomBox].innerHTML = 2;
 		emptyBoxes[randomBox].parentNode.className = "box_2";
@@ -87,6 +96,7 @@ function generateNumber(){
 		points_var += 2;
 		document.getElementById("points_p").innerHTML = points_var;
 	}
+
 	else if(randomNumber > 0.9){
 		emptyBoxes[randomBox].innerHTML = 4;
 		console.log("Generating a 4");
@@ -99,42 +109,6 @@ function generateNumber(){
 		console.log("Error in generating initial number in empty box");
 	}
 } 
-
-//BOX FETCH FUNCTIONS
-
-//gets all boxes 
-function getBoxes(){
-	return document.getElementsByClassName("v");
-}
-
-//get Boxes by column
-function getBoxesByColumn(columnNumber) {
-  return document.querySelectorAll("div[id^=row] > div[id$='" + columnNumber + "']"); // SHould learn about Queuryselectors soon
-}
-
-//get boxes by row number
-
-
-function getBoxesByRow(rowNumber) {
-  return document.querySelectorAll("div[id^=row]>div[id^='" + rowNumber + "']");// SHould learn about Queuryselectors soon
-}
-
-
-
-
-//Generates an array of empty boxes
-function cycleBoxes(){
-	var boxes = getBoxes();
-	var emptyBoxes = [];
-	for(i = 0; i < boxes.length; i++){
-		if( boxes[i].innerHTML == ""){
-			emptyBoxes.push(boxes[i]);
-		}
-	}
-	return emptyBoxes;
-}
-
-
 
 
 //Resets board
@@ -151,12 +125,31 @@ function reset(){
 	points_var = 0;
 }
 
+function checkWin(){
+	var boxes = getBoxes();
+	for(boxCur = 0; boxCur < boxes.length; boxCur ++){
+		if(boxes[boxCur].innerHTML == 2048){
+			document.getElementById("rules_p").innerHTML = "You win! Keep on playing to get more points!";
+		}
+	}
+}
 
 
+/****MOVEMENT CONTROL METHODS ****/
 
-//MOVEMENT Controls
+/*Movement control methods are more complicated.
+* Movement is done by cycling through each column or row, depending on the direction
+*	Each colunm or row is represented by an array
+*	A nested loop is implemented to cycle through these sub arrays
+*	method checks the value of each box
+*		If the value is non-zero, it cycles back down to the start of the array to find an empty box
+*			If there is an empty box, it swaps both of these values
+*			Then it checks if it can merge the two boxes
+*Function returns if there was a switch done or not, helps in figuring out if the game is over
+*/
 
 
+//UP
 function moveUp()
 {
 	totalSwitch = false;
@@ -198,6 +191,7 @@ function moveUp()
 
 }
 
+//DOWN
 function moveDown()
 {
 	totalSwitch = false;
@@ -242,6 +236,7 @@ function moveDown()
 
 }
 
+//LEFT
 function moveLeft()
 {
 	totalSwitch = false;
@@ -282,7 +277,7 @@ function moveLeft()
 	return totalSwitch;
 }
 
-
+//RIGHT
 function moveRight()
 {
 	totalSwitch = false;
@@ -330,19 +325,46 @@ function moveRight()
 }
 
 
-function checkWin(){
+/**********************/
+/****HELPER METHODS ***/
+/**********************/
+
+
+/**** BOX FETCH FUNCTIONS ****/
+
+//gets all boxes 
+function getBoxes(){
+	return document.getElementsByClassName("v");
+}
+
+//get Boxes by column
+function getBoxesByColumn(columnNumber) {
+  return document.querySelectorAll("div[id^=row] > div[id$='" + columnNumber + "']"); // SHould learn about Queuryselectors soon
+}
+
+//get boxes by row number
+function getBoxesByRow(rowNumber) {
+  return document.querySelectorAll("div[id^=row]>div[id^='" + rowNumber + "']");// SHould learn about Queuryselectors soon
+}
+
+//Generates an array of empty boxes
+function cycleBoxes(){
 	var boxes = getBoxes();
-	for(boxCur = 0; boxCur < boxes.length; boxCur ++){
-		if(boxes[boxCur].innerHTML == 2048){
-			document.getElementById("rules_p").innerHTML = "You win! Keep on playing to get more points!";
+	var emptyBoxes = [];
+	for(i = 0; i < boxes.length; i++){
+		if( boxes[i].innerHTML == ""){
+			emptyBoxes.push(boxes[i]);
 		}
 	}
+	return emptyBoxes;
 }
 
 
 
+/**** MOVEMENT METHODS ****/
 
-//Movement Helper Methods
+
+//Swaps the values of two boxes (used when moving through empty boxes)
 function swapValues(one, two){
 	//Swaps inner html values
 	tmp = one.innerHTML;
@@ -355,6 +377,8 @@ function swapValues(one, two){
 }
 
 
+//Merges two boxes together
+//Should be called merge(), not mergeUp since direction doesn't matter. Change when possible
 function mergeUp(box1, box2){
 	var box1_value = box1.querySelector(".v").innerHTML;
 	var box2_value = box2.querySelector(".v").innerHTML;
@@ -372,8 +396,9 @@ function mergeUp(box1, box2){
 }
 
 
-//General Helper methods
+/**** GENERAL HELPER METHODS ****/
 
+//Inverse an array, used to implement moveRight and moveDown() methods by simply inversing arrays
 function inverseArray(array){
 	var arrayLength = array.length - 1; //equals to 3
 	var newArray = [];
@@ -386,8 +411,12 @@ function inverseArray(array){
 }
 
 
-// Test functions
+/**************************/
+/****DEBBUGGING METHODS ***/
+/**************************/
 
+
+//Don't remember why I used that
 function test(){
 	var boxes = getBoxesByColumn(1);
 	console.log(boxes);

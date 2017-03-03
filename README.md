@@ -3,6 +3,13 @@
 Purpose of the project:
 Learning front end development by using vanilla HTML/JS/CSS with a particular focus on classes/IDs, selectors, and logic. Will then move on to learning more advanced front end frameworks.
 
+Update 0.5.1
+
+Commented some of the code for better reading
+
+Changed event listener from reset button to entire document for better playability.
+
+
 Update 0.5
 
 Implemented win conditions, activated upon reaching the 2048 tile
