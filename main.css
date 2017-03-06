@@ -1,11 +1,41 @@
 
-/*BackGround*/
+/*GENERAL*/
+
+body{
+	margin:0px;
+}
 
 
+/*HEADER*/
+
+#header{
+
+	margin: 0px;
+}
+
+
+h1{
+	background: #7F7656;
+
+	margin: 0px;
+
+	padding-top: 2.5%;
+}
+
+
+
+/*CONTENT*/ 
+
+#content{
+	background: #FFEDAD;
+
+	padding-top: 5%;
+
+}
 
 #game_background{
 
-	background: #0000000;
+	background: white;
 	border: solid black;
 
 	width: 500px;
@@ -13,7 +43,7 @@
 
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 5%;
+
 }
 
 .row{

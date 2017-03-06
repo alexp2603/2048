@@ -25,6 +25,14 @@ function gameStart(){
 	//Add event listener to document
 	document.addEventListener("keyup", inputListen, false);
 
+	//Disables arrow key scrolling
+	window.addEventListener("keydown", function(e) {
+	    // space and arrow keys
+	    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+	        e.preventDefault();
+	    }
+	}, false);
+
 	//shows rules
 	document.getElementById("rules_p").innerHTML = "Use the arrow keys to push boxes together and form the number 2048!";
 }
