@@ -3,6 +3,10 @@
 Purpose of the project:
 Learning front end development by using vanilla HTML/JS/CSS with a particular focus on classes/IDs, selectors, and logic. Will then move on to learning more advanced front end frameworks.
 
+Update 0.7 March 6th 2017
+
+Added a lost condition
+
 Update 0.6 March 6th 2017
 
 Working on some styling for the page

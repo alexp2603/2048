@@ -50,6 +50,9 @@ function inputListen(e){
 			if(result){
 				generateNumber();
 				checkWin();
+				if(checkLost()){
+					alert("You lost! \nYou got to a score of: " + points_var +"\nClick the reset button to try again!");
+				}
 			}
 			break;
 		//Up
@@ -58,6 +61,9 @@ function inputListen(e){
 				if(result){
 					generateNumber();
 					checkWin();
+					if(checkLost()){
+						alert("You lost! \nYou got to a score of: " + points_var +"\nClick the reset button to try again!");
+					}
 				}
 			break;
 		//Right
@@ -66,6 +72,9 @@ function inputListen(e){
 				if(result){
 					generateNumber();
 					checkWin();
+					if(checkLost()){
+						alert("You lost! \nYou got to a score of: " + points_var +"\nClick the reset button to try again!");
+					}
 				}
 
 			break;
@@ -75,6 +84,9 @@ function inputListen(e){
 				if(result){
 					generateNumber();
 					checkWin();
+					if(checkLost()){
+						alert("You lost! \nYou got to a score of: " + points_var +"\nClick the reset button to try again!");
+					}
 				}
 	}
 }
@@ -98,14 +110,14 @@ function generateNumber(){
 	if(randomNumber <= 0.9){
 		emptyBoxes[randomBox].innerHTML = 2;
 		emptyBoxes[randomBox].parentNode.className = "box_2_gen";
-		console.log("Generating a 2");
+	//	console.log("Generating a 2");
 		points_var += 2;
 		document.getElementById("points_p").innerHTML = points_var;
 	}
 
 	else if(randomNumber > 0.9){
 		emptyBoxes[randomBox].innerHTML = 4;
-		console.log("Generating a 4");
+	//	console.log("Generating a 4");
 		emptyBoxes[randomBox].parentNode.className = "box_4_gen";
 		points_var += 4;
 		document.getElementById("points_p").innerHTML = points_var;
@@ -139,6 +151,98 @@ function checkWin(){
 		}
 	}
 }
+
+
+function checkLost(){
+
+	var lost = true;
+	var boxes = getBoxes();
+
+	for(boxCur = 0; boxCur < boxes.length; boxCur++){
+		var name = boxes[boxCur].parentNode.id;
+		for(i = 0 ; i < 4; i++){
+			
+			switch(i){
+
+				//test left
+				case 0:
+					var testName = name[0]+"_" + (parseInt(name[2])-1);
+					if(!checkAroundBoxes(boxes[boxCur],  testName ) ){
+						lost = false;
+					}
+					break;
+
+				//Checks down
+				case 1:
+					var testName = (parseInt(name[0])+1) +"_" + (name[2]);
+					if(!checkAroundBoxes(boxes[boxCur], testName ) ) {
+						lost = false;
+					}
+					break;
+
+				//Checks box right
+				case 2:
+					var testName = (name[0] +"_" + (parseInt(name[2])+1) );
+					if(!checkAroundBoxes(boxes[boxCur], testName)){
+						lost = false;
+					}
+					break;
+
+
+				//checks box top
+				case 3:
+					var testName = (( parseInt(name[0]- 1)) + "_" + name[2]);
+					if(!checkAroundBoxes(boxes[boxCur], testName)){
+						lost = false;
+					}
+					break;
+			} //End case
+
+
+		}
+
+	}
+
+	return lost; 
+}
+
+
+
+function checkAroundBoxes(box, compare){
+
+		var lost = true;
+	
+		/*check for two conditions
+		1. If there is an empty box
+		2. If there are two boxes that can be merged
+		*/
+
+		var compareExists = !!document.getElementById(compare);
+		var boxHasValue = (box.innerHTML != null && box.innerHTML >0);
+
+		//console.log(compareExists);
+		//console.log(boxHasValue);
+
+		//Deals with the first possible case - simply an empty bpx that allows movement
+		if(!boxHasValue){
+			lost = false;
+		}
+
+
+		//Now got to deal with the fact that two boxes can be merged, it's harder
+
+		if(compareExists){
+			if( document.getElementById(compare).querySelector(".v").innerHTML == box.innerHTML){
+				lost = false;
+			}
+		}
+
+
+		/*Check if both compare and the input box exists*/
+
+		return lost;
+}
+
 
 
 /****MOVEMENT CONTROL METHODS ****/
@@ -376,29 +480,19 @@ function swapValues(one, two){
 	//removes animation for 2 values
 
 	if(one.className === ("box_2_gen")){
-		console.log("one.className true");
 		one.className = "box_2";
 	}
 	if(two.className === ("box_2_gen")){
-		console.log("two.className true");
 		two.className = "box_2";
 	}
 
 	//Removes animation for 4 values
-
 	if(one.className === ("box_4_gen")){
-		console.log("one.className true");
 		one.className = "box_4";
 	}
 	if(two.className === ("box_4_gen")){
-		console.log("two.className true");
 		two.className = "box_4";
 	}
-
-	console.log("Before switch");
-	console.log(one.className);
-	console.log(two.className);
-
 
 	//Swaps inner html values
 	tmp = one.innerHTML;
@@ -408,12 +502,6 @@ function swapValues(one, two){
 	var tmp = one.className;
 	one.className = two.className;
 	two.className = tmp;
-
-
-	console.log("after switch");
-	console.log(one.className);
-	console.log(two.className);
-
 
 }
 
@@ -429,7 +517,7 @@ function mergeUp(box1, box2){
 		box1.className = "box_empty";
 		box2.className = "box_" + (box2_value*2);
 
-		console.log("Merge, incrementing points by " + (box2_value*2) );
+		//console.log("Merge, incrementing points by " + (box2_value*2) );
 		points_var += box2_value*2;
 
 		return true;
@@ -444,8 +532,6 @@ function inverseArray(array){
 	var arrayLength = array.length - 1; //equals to 3
 	var newArray = [];
 	for(count = arrayLength ; count>= 0 ; count--){
-		console.log(count);
-		console.log(array[count]);
 		newArray.push(array[count]);
 	}
 	return newArray;
