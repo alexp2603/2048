@@ -10,8 +10,16 @@ body{
 
 #header{
 
+
 	margin: 0px;
 	height: 15%;
+
+	margin: 0px;
+	padding-top: 0.5%;
+	padding-left: 1.5%;
+	padding-bottom: 1%;
+
+	background: #7F7656;
 }
 
 
@@ -22,11 +30,12 @@ h1{
 	color: white;
 
 	margin: 0px;
-	padding-top: 0.5%;
-	padding-left: 1.5%;
-	padding-bottom: 1%;
 }
 
+#header a{
+	font-family:'Hind';
+	color:white;
+}
 
 
 /*WRAPPER*/
@@ -126,13 +135,10 @@ Note to self: could have created one box class to handle all similar elements an
 
 @keyframes createBox{
 	from{
-		height:0px;
-		width: 0px;
-
+		transform: scale(0);
 	}
 	to{
-		height: 98px;
-		width: 98px;
+		transform: scale(1);
 	}
 }
 
