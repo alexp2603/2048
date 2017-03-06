@@ -382,7 +382,7 @@ Note to self: could have created one box class to handle all similar elements an
 #start_button{
 	width: 10%;
 	height: 50px;
-	margin-top: 1%;
+	margin-top: 0.5%;
 	margin-left: auto;
 	margin-right: auto;
 	background: lightgreen;
@@ -396,7 +396,7 @@ Note to self: could have created one box class to handle all similar elements an
 #reset_button{
 	width: 10%;
 	height: 50px;
-	margin-top: 1%;
+	margin-top: 0.5%;
 	margin-left: auto;
 	margin-right: auto;
 	background: pink;
@@ -413,7 +413,7 @@ Note to self: could have created one box class to handle all similar elements an
 	margin-right:auto;
 	text-align: center;
 
-	padding-top: 2%; /*Using Rule element to pad top of content div */
+	padding-top: 0.5%; /*Using Rule element to pad top of content div */
 
 	font-family: 'Hind';
 	color: white;
@@ -421,7 +421,7 @@ Note to self: could have created one box class to handle all similar elements an
 }
 
 #points{
-	margin-top:1%;
+	margin-top:0.5%;
 	width: 50%;
 	margin-left:auto;
 	margin-right:auto;
@@ -433,11 +433,14 @@ Note to self: could have created one box class to handle all similar elements an
 	color:white;
 }
 
+#points_p{
+	margin: 0px;
+}
+
 
 
 #footer{
  	
-	margin: 0px;
  	padding: 0px;
 
 	background: #FFEDAD;
@@ -451,9 +454,11 @@ Note to self: could have created one box class to handle all similar elements an
 #footer_text{
 	margin: 0px;
 
+	text-align: center;
+
 	position: center;
 
-	border-top: black 2px;
+	border-top: solid black;
 
 	font-family:'Hind';
 	font-weight: 300;
