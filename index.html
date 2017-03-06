@@ -9,6 +9,10 @@
 	<link rel="stylesheet" type="text/css" href="./main.css">
 	<script src="./script.js"></script>
 
+
+	<!-- Font imports -->
+	<link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
+
 </header>
 
 <body>
@@ -17,124 +21,121 @@
 		
 		<div id="header">
 			<h1>2048 Game - Test Project By Alexandre Perron</h1>
-		</div>
+		</div> <!--closes header-->
 
 		<div id="content">
 
+			<div id = "rules">
+				<p id="rules_p">Use the arrow keys to push boxes together and form the number 2048!</p>
+			</div> <!--closes rules-->
+
+
 			<div id = "game_background">
 
-			<!-- Row 1 --> 
+				<!-- Row 1 --> 
 
-			<div id = "row_1" class = "row">
+				<div id = "row_1" class = "row">
 
-				<div id = "1_1" class = "box_empty">
-					<p class = "v"></p>
-				</div>
+					<div id = "1_1" class = "box_empty">
+						<p class = "v"></p>
+					</div>
 
-				<div id = "1_2" class = "box_empty">
-					<p class = "v"></p>
-				</div>
+					<div id = "1_2" class = "box_empty">
+						<p class = "v"></p>
+					</div>
 
-				<div id = "1_3" class = "box_empty">
-					<p class = "v"></p>
-				</div>
+					<div id = "1_3" class = "box_empty">
+						<p class = "v"></p>
+					</div>
 
-				<div id = "1_4" class = "box_empty">
-					<p class = "v"></p>
-				</div> 
+					<div id = "1_4" class = "box_empty">
+						<p class = "v"></p>
+					</div> 
 
-			</div>
+				</div> <!--closes row 1-->
 
-			<!-- Row 2 --> 
-			<div id = "row_2" class = "row">
+				<!-- Row 2 --> 
+				<div id = "row_2" class = "row">
 
-				<div id = "2_1" class = "box_empty">
-					<p class = "v"></p>
-				</div>
+					<div id = "2_1" class = "box_empty">
+						<p class = "v"></p>
+					</div>
 
-				<div id = "2_2" class = "box_empty">
-					<p class = "v"></p>
-				</div>
+					<div id = "2_2" class = "box_empty">
+						<p class = "v"></p>
+					</div>
 
-				<div id = "2_3" class = "box_empty">
-					<p class = "v"></p>
-				</div>
+					<div id = "2_3" class = "box_empty">
+						<p class = "v"></p>
+					</div>
 
-				<div id = "2_4" class = "box_empty">
-					<p class = "v"></p>
-				</div>
-			</div>
+					<div id = "2_4" class = "box_empty">
+						<p class = "v"></p>
+					</div>
+				</div> <!--closes row2-->
 
 
-			<!-- Row 3 --> 
-			<div id = "row_3" class = "row">
+				<!-- Row 3 --> 
+				<div id = "row_3" class = "row">
 
-				<div id = "3_1" class = "box_empty">
-					<p class = "v"></p>
-				</div>
+					<div id = "3_1" class = "box_empty">
+						<p class = "v"></p>
+					</div>
 
-				<div id = "3_2" class = "box_empty">
-					<p class = "v"></p>
-				</div>
+					<div id = "3_2" class = "box_empty">
+						<p class = "v"></p>
+					</div>
 
-				<div id = "3_3" class = "box_empty">
-					<p class = "v"></p>
-				</div>
+					<div id = "3_3" class = "box_empty">
+						<p class = "v"></p>
+					</div>
 
-				<div id = "3_4" class = "box_empty">
-					<p class = "v"></p>
-				</div>
+					<div id = "3_4" class = "box_empty">
+						<p class = "v"></p>
+					</div>
 
-			</div>
+				</div> <!--closes row 3-->
 
-			<!-- Row 4 --> 
-			<div id = "row_4" class = "row">
+				<!-- Row 4 --> 
+				<div id = "row_4" class = "row">
 
-				<div id = "4_1" class = "box_empty">
-					<p class = "v"></p>
-				</div>
+					<div id = "4_1" class = "box_empty">
+						<p class = "v"></p>
+					</div>
 
-				<div id = "4_2" class = "box_empty">
-					<p class = "v"></p>
-				</div>
+					<div id = "4_2" class = "box_empty">
+						<p class = "v"></p>
+					</div>
 
-				<div id = "4_3" class = "box_empty">
-					<p class = "v"></p>
-				</div>
+					<div id = "4_3" class = "box_empty">
+						<p class = "v"></p>
+					</div>
 
-				<div id = "4_4" class = "box_empty">
-					<p class = "v"></p>
-				</div>
+					<div id = "4_4" class = "box_empty">
+						<p class = "v"></p>
+					</div>
 
-			</div>
-		
-			</div>
+				</div> <!--closes row 4-->
+			</div> <!--closes game background-->
 
 			
-			<div id = "rules">
-				<p id="rules_p"></p>
-			</div>
-
-			<div id = "points">
-				<p id= "points_p"></p>
-			</div>
-
-			<div id= "button">
-			<button onclick="gameStart()" id = "start_button"> Start Game </button>
-			</div>
-
-<!--
-			<div id= "button">
-			<button onclick="generateNumber()" id = "debug_button"> generate Number (debug) </button>
-			</div>
--->
 		
+			<div id = "points">
+				<p id= "points_p">0</p>
+			</div>
 
-		<div id="footer">
+			<div id= "button">
+				<button onclick="gameStart()" id = "start_button"> Start Game </button>
+			</div>
+
+	</div> <!--closes content-->
+
+	<div id="footer">
 			<p id=footer_text> Alexandre Perron, 2017 </p>
-		</div>
-
 	</div>
+
+</div>
+
 </body>
 
 
