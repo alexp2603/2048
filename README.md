@@ -3,9 +3,11 @@
 Purpose of the project:
 Learning front end development by using vanilla HTML/JS/CSS with a particular focus on classes/IDs, selectors, and logic. Will then move on to learning more advanced front end frameworks.
 
-Update 0.5.2 March 6th 2017
+Update 0.6 March 6th 2017
 
 Working on some styling for the page
+Imported Hind Font and applied it to app
+Added some animations
 
 Update 0.5.1
 

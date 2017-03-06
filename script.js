@@ -33,8 +33,6 @@ function gameStart(){
 	    }
 	}, false);
 
-	//shows rules
-	document.getElementById("rules_p").innerHTML = "Use the arrow keys to push boxes together and form the number 2048!";
 }
 
 
@@ -99,7 +97,7 @@ function generateNumber(){
 	//Changes box properties as well as increments point counter.
 	if(randomNumber <= 0.9){
 		emptyBoxes[randomBox].innerHTML = 2;
-		emptyBoxes[randomBox].parentNode.className = "box_2";
+		emptyBoxes[randomBox].parentNode.className = "box_2_gen";
 		console.log("Generating a 2");
 		points_var += 2;
 		document.getElementById("points_p").innerHTML = points_var;
@@ -108,7 +106,7 @@ function generateNumber(){
 	else if(randomNumber > 0.9){
 		emptyBoxes[randomBox].innerHTML = 4;
 		console.log("Generating a 4");
-		emptyBoxes[randomBox].parentNode.className = "box_4";
+		emptyBoxes[randomBox].parentNode.className = "box_4_gen";
 		points_var += 4;
 		document.getElementById("points_p").innerHTML = points_var;
 	}
@@ -374,6 +372,34 @@ function cycleBoxes(){
 
 //Swaps the values of two boxes (used when moving through empty boxes)
 function swapValues(one, two){
+
+	//removes animation for 2 values
+
+	if(one.className === ("box_2_gen")){
+		console.log("one.className true");
+		one.className = "box_2";
+	}
+	if(two.className === ("box_2_gen")){
+		console.log("two.className true");
+		two.className = "box_2";
+	}
+
+	//Removes animation for 4 values
+
+	if(one.className === ("box_4_gen")){
+		console.log("one.className true");
+		one.className = "box_4";
+	}
+	if(two.className === ("box_4_gen")){
+		console.log("two.className true");
+		two.className = "box_4";
+	}
+
+	console.log("Before switch");
+	console.log(one.className);
+	console.log(two.className);
+
+
 	//Swaps inner html values
 	tmp = one.innerHTML;
 	one.innerHTML= two.innerHTML;
@@ -382,6 +408,13 @@ function swapValues(one, two){
 	var tmp = one.className;
 	one.className = two.className;
 	two.className = tmp;
+
+
+	console.log("after switch");
+	console.log(one.className);
+	console.log(two.className);
+
+
 }
 
 

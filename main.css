@@ -11,26 +11,39 @@ body{
 #header{
 
 	margin: 0px;
+	height: 15%;
 }
 
 
 h1{
 	background: #7F7656;
 
-	margin: 0px;
+	font-family: 'Hind';
+	color: white;
 
-	padding-top: 2.5%;
+	margin: 0px;
+	padding-top: 0.5%;
+	padding-left: 1.5%;
+	padding-bottom: 1%;
 }
 
 
 
+/*WRAPPER*/
+
+#wrapper{
+	min-height:100%;
+	height: 100%;
+}
+
 /*CONTENT*/ 
 
 #content{
-	background: #FFEDAD;
+	background: #85A2B2;
 
-	padding-top: 5%;
+	padding-bottom: 5%;
 
+	margin: 0px;
 }
 
 #game_background{
@@ -43,6 +56,8 @@ h1{
 
 	margin-left: auto;
 	margin-right: auto;
+
+	font-family: 'Hind';
 
 }
 
@@ -86,11 +101,66 @@ Note to self: could have created one box class to handle all similar elements an
 	float: left;
 }
 
-.box_2{
+.box_2_gen{
+
+	animation-duration: 0.25s;
+	animation-name: createBox;
 
 	position: relative;
 
 	background: #FFEDAD;
+
+	border: black solid;
+	border-width: 1px;
+	border-radius: 15px;
+
+	width: 98px;
+	height: 98px;
+
+	margin: 10px;
+
+	float: left;
+}
+
+
+
+@keyframes createBox{
+	from{
+		height:0px;
+		width: 0px;
+
+	}
+	to{
+		height: 98px;
+		width: 98px;
+	}
+}
+
+.box_2{
+	position: relative;
+
+	background: #FFEDAD;
+
+	border: black solid;
+	border-width: 1px;
+	border-radius: 15px;
+
+	width: 98px;
+	height: 98px;
+
+	margin: 10px;
+
+	float: left;
+}
+
+.box_4_gen{
+
+	animation-duration: 0.25s;
+	animation-name: createBox;
+
+	position: relative;
+
+	background: #FFDE67;
 
 	border: black solid;
 	border-width: 1px;
@@ -332,11 +402,16 @@ Note to self: could have created one box class to handle all similar elements an
 }
 
 #rules{
-	margin-top:1%;
 	width: 50%;
 	margin-left:auto;
 	margin-right:auto;
 	text-align: center;
+
+	padding-top: 2%; /*Using Rule element to pad top of content div */
+
+	font-family: 'Hind';
+	color: white;
+
 }
 
 #points{
@@ -345,13 +420,35 @@ Note to self: could have created one box class to handle all similar elements an
 	margin-left:auto;
 	margin-right:auto;
 	text-align: center;
+
+	font-family: 'Hind';
+	font-weight: 700;
+	font-size: 250%;
+	color:white;
 }
 
 
 
 #footer{
- 	align-self: center;
-	position: absolute; /* I don't care about other things */
-	/*bottom: 0; /* I want to be on the bottom... */ 
-	text-align: center;   /* ...and to the left */
+ 	
+	margin: 0px;
+ 	padding: 0px;
+
+	background: #FFEDAD;
+
+	height: 5%;
+
+	border-top: black;
+	border-width: 3px;
+}
+
+#footer_text{
+	margin: 0px;
+
+	position: center;
+
+	border-top: black 2px;
+
+	font-family:'Hind';
+	font-weight: 300;
 }
