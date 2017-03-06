@@ -6,7 +6,9 @@ Learning front end development by using vanilla HTML/JS/CSS with a particular fo
 Update 0.6 March 6th 2017
 
 Working on some styling for the page
+
 Imported Hind Font and applied it to app
+
 Added some animations
 
 Update 0.5.1
